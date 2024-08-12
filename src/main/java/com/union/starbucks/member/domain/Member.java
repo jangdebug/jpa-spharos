@@ -17,7 +17,7 @@ public class Member {
     @Column(nullable = false, length = 100)
     private String name;
     @Comment("회원 닉네임")
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String nickname;
     @Comment("회원 생년월일")
     @Column(nullable = false, length = 20)
