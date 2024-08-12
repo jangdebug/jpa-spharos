@@ -6,7 +6,7 @@ import com.union.starbucks.member.dto.MemberSignUpDto;
 public interface MemberService {
 
     void signUp(MemberSignUpDto memberSignUpDto);
-    Member getMemberById(Long id);
-    Member getMemberByEmail(String email);
+    MemberSignUpDto getMemberById(Long id);
+    MemberSignUpDto getMemberByEmail(String email);
 
 }

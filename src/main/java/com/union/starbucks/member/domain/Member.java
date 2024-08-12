@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.Comment;
 
 import java.util.Date;
 
 @Getter
 @Entity
+@ToString
 @NoArgsConstructor
 public class Member {
 
@@ -38,6 +40,7 @@ public class Member {
     @Column(nullable = false, length = 100)
     private String address;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
@@ -50,7 +53,8 @@ public class Member {
             String phone,
             String email,
             String password,
-            String address
+            String address,
+            Gender gender
     ) {
         this.id = id;
         this.name = name;
@@ -60,6 +64,7 @@ public class Member {
         this.email = email;
         this.password = password;
         this.address = address;
+        this.gender = gender;
     }
 
 }
