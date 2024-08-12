@@ -1,7 +1,10 @@
 package com.union.starbucks.member.vo;
 
+import lombok.Getter;
+
 import java.util.Date;
 
+@Getter
 public class MemberRequestVo {
 
     private String email;

@@ -1,13 +1,16 @@
 package com.union.starbucks.member.domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.util.Date;
 
 @Getter
 @Entity
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -37,5 +40,26 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Builder
+    public Member(
+            Long id,
+            String name,
+            String nickname,
+            Date birth,
+            String phone,
+            String email,
+            String password,
+            String address
+    ) {
+        this.id = id;
+        this.name = name;
+        this.nickname = nickname;
+        this.birth = birth;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+    }
 
 }
