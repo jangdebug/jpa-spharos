@@ -6,14 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.Comment;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Entity
 @ToString
 @NoArgsConstructor
-public class Member {
+public class Member implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,4 +72,39 @@ public class Member {
         this.gender = gender;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        //List<GrantedAuthority> authorities = new ArrayList<>();
+        return List.of();
+    }
+
+    @Override
+    public String getUsername() {
+        //return "";
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        //return false;
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        //return false;
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        //return false;
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        //return false;
+        return true;
+    }
 }

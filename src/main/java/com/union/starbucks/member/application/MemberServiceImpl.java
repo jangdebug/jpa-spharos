@@ -46,7 +46,9 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public MemberSignUpDto getMemberByEmail(String email) {
-        Member member = memberRepository.findByEmail(email);
+        Member member = memberRepository.findByEmail(email).orElseThrow(
+                () -> new IllegalArgumentException("해당 이메일을 가진 회원이 없습니다.")
+        );
         if (member != null) {
             MemberSignUpDto memberSignUpDto = MemberSignUpDto.builder()
                     .id(member.getId())
