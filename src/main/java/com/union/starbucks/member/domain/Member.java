@@ -8,6 +8,7 @@ import lombok.ToString;
 import org.hibernate.annotations.Comment;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -72,39 +73,38 @@ public class Member implements UserDetails {
         this.gender = gender;
     }
 
+    public void hashPassword(String password) {
+        this.password = new BCryptPasswordEncoder().encode(password);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //List<GrantedAuthority> authorities = new ArrayList<>();
+//        List<GrantedAuthority> authorities = new ArrayList<>();
         return List.of();
     }
 
     @Override
     public String getUsername() {
-        //return "";
         return this.email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        //return false;
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        //return false;
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        //return false;
         return true;
     }
 
     @Override
     public boolean isEnabled() {
-        //return false;
         return true;
     }
 }
